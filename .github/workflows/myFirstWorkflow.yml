@@ -1,55 +1,17 @@
-name: my-first-workflow
+name: Schedule Test
 
 on:
-  # Run manually from GitHub Actions
   workflow_dispatch:
 
-  # Run whenever code is pushed
-  push:
-
-  # Run every 5 minutes
   schedule:
-    - cron: "7,22,37,48 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
-  job1:
-    name: JOB1
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Running Single Command in Job1
-        run: echo "Hello"
-
-      - name: OS Release
-        run: cat /etc/os-release
-
-      - name: Calling sleep
-        run: sleep 20
-
-  job2:
-    name: JOB2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Runner Hostname
-        run: hostname
-
-      - name: Multiple Commands
+      - name: Test
         run: |
-          echo "Hello everyone"
-          echo "My name is Periklis `date`"
-          sleep 20
-
-  job3:
-    name: JOB3
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Job with Single Dependency
-        run: sleep 10
-
-  job4:
-    name: JOB4
-    needs: [job1, job2, job3]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Job for Multiple Dependencies
-        run: sleep 10
+          echo "Triggered!"
+          echo "Event: ${{ github.event_name }}"
+          date -u
