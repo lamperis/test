@@ -9,7 +9,7 @@ on:
 
   # Run every 5 minutes
   schedule:
-    - cron: "7,22,37,44 * * * *"
+    - cron: "7,22,37,48 * * * *"
 
 jobs:
   job1:
