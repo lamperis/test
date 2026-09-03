@@ -11,3 +11,17 @@ jobs:
         run: echo "Hello"
       - name: OS Release
         run: cat /etc/os-release
+      - name: Calling sleep
+        run: sleep 20
+  
+  job2:
+    name: JOB2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Runner Hostname
+        run: hostname
+      - name: Multiple Commands
+        run: |
+          echo "Hello everyone"
+          echo "My name is Periklis `date`"
+          sleep 20
