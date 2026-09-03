@@ -13,7 +13,7 @@ jobs:
           ls -ltr
           hostname
       - name: Checkout
-        uses: actions/checkout@v6.1.0
+        uses: actions/checkout@v7.0.1
       - name: After
         run: |
           pwd >> artifact.txt
