@@ -17,10 +17,23 @@ jobs:
       - name: After
         run: |
           pwd >> artifact.txt
-          ls -ltr
-          hostname
+          mkdir artifacts
+          echo `ls -ltr` >> artifacts/list.txt
+          echo `hostname` >> artifacts/hostname.txt
       - name: Upload file
         uses: actions/upload-artifact@v7.0.1
         with:
           name: single_file
           path: ./artifact.txt
+      - name: Upload from directory
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: directory_artifacts_path
+          path: artifacts/
+      - name: Upload from multiple paths
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: multiple_paths
+          paths: |
+            ./artifact.txt
+            artifacts/
