@@ -1,6 +1,13 @@
 name: my-first-workflow
-# To get a trigger on every push in this
+
 on:
+  # Run manually from GitHub Actions
+  workflow_dispatch:
+
+  # Run whenever code is pushed
+  push:
+
+  # Run every 5 minutes
   schedule:
     - cron: "*/5 * * * *"
 
@@ -11,35 +18,38 @@ jobs:
     steps:
       - name: Running Single Command in Job1
         run: echo "Hello"
+
       - name: OS Release
         run: cat /etc/os-release
+
       - name: Calling sleep
         run: sleep 20
-  
+
   job2:
     name: JOB2
     runs-on: ubuntu-latest
     steps:
       - name: Runner Hostname
         run: hostname
+
       - name: Multiple Commands
         run: |
           echo "Hello everyone"
           echo "My name is Periklis `date`"
           sleep 20
-  
+
   job3:
     name: JOB3
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Job with Single Depedency
+      - name: Job with Single Dependency
         run: sleep 10
-  
+
   job4:
     name: JOB4
     needs: [job1, job2, job3]
     runs-on: ubuntu-latest
     steps:
-      - name: Job for Multiple Depedencies
+      - name: Job for Multiple Dependencies
         run: sleep 10
