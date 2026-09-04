@@ -2,6 +2,10 @@ name: Schedule Test
 
 on:
   push:
+    branches:
+    - main
+    - dev
+    - 'feature*'
 
 jobs:
   test1:
