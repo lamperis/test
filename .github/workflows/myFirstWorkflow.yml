@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  test:
+  test1:
     runs-on: ubuntu-latest
     steps:
       - name: Before
@@ -37,3 +37,19 @@ jobs:
           path: |
             ./artifact.txt
             artifacts/
+  
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check current directory
+        run: |
+          pwd
+          ls -ltr
+      - name: Download single file artifact
+        uses: actions/download-artifact@v8.0.1
+        with:
+          name: single_file
+      - name: Check current directory post download
+        run: |
+          pwd
+          ls -ltr
