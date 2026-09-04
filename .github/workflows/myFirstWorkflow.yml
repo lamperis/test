@@ -6,6 +6,9 @@ on:
     - main
     - dev
     - 'feature*'
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test1:
@@ -58,3 +61,5 @@ jobs:
         run: |
           pwd
           ls -ltr
+      - name: Step for PR Demo
+        run: exit 0
