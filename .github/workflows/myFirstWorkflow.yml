@@ -39,6 +39,7 @@ jobs:
             artifacts/
   
   test2:
+    needs: test1
     runs-on: ubuntu-latest
     steps:
       - name: Check current directory
